@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #My apps
+    'ians_py_page',
+
+    #Default django apps.
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
