@@ -123,33 +123,33 @@ Now the way I go about creating web pages for this site is by first defining the
 
 So the first step I took in this process was defiing the URL pattern which I did by first inside the urls.py file in ians_webpage folder entering the following code: 
 
-from django.contrib import admin
-from django.urls import path, include
+        from django.contrib import admin
+        from django.urls import path, include
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('ians_py_page.urls')),
-    ]
+        urlpatterns = [
+            path('admin/', admin.site.urls),
+            path('', include('ians_py_page.urls')),
+            ]
 
 
 Once I did that I created a file within the ians_py_page folder called urls.py and inside that file the following code was entered which resembles the file withing ians_webpage under the same name:
 
-from django.urls import path
+        from django.urls import path
 
-from . import views 
+        from . import views 
 
-app_name = 'ians_py_page'
-urlpatterns = [
-    #Home page
-    path('', views.index, name='index'),
-]
+        app_name = 'ians_py_page'
+        urlpatterns = [
+            #Home page
+            path('', views.index, name='index'),
+        ]
 
 
 After this step I went into the views.py file that was autumatically created upon starting the ians_py_page app and entered the following to write a view:
 
-def index(request):
-    """The homepage for ians_py_page"""
-    return render(request, 'ians_py_page/index.html')
+        def index(request):
+            """The homepage for ians_py_page"""
+            return render(request, 'ians_py_page/index.html')
 
 
 And after that I created the file index.html to write out the template for the homepage.
