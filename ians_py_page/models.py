@@ -1,23 +1,34 @@
 from django.db import models
 
 # Create your models here.
-class Topic(models.Model):
-    """A class that represents the topic of a blog post."""
-    text = models.CharField(max_length=200)
-    date_added = models.DateTimeField(auto_now_add=True)
+class Blog(models.Model):
+    """This class will hold the name of the blog."""
+    name = models.CharField(max_length=100)
+    tagline = models.TextField()
+
+    #A method that returns the name of our blog as a string.
+    def __str__(self):
+        return self.name
+
+class Author(models.Model):
+    """Class that holds the model for Author"""
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
 
     def __str__(self):
-        """Return a string representation of the model."""
-        return self.text
+        return self.name
 
-class Body(models.Model):
-    """This will hold the body of the blog post."""
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
-    text = models.TextField()
-
-    class Meta:
-        verbose_name_plural = 'bodies'
+class Entry(models.Model):
+    """This will hold the entire format of the blog entry."""
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    headline = models.CharField(max_length=255)
+    body_text = models.TextField()
+    pub_date = models.DateField()
+    mod_date = models.DateField()
+    authors = models.ManyToManyField(Author)
+    number_of_comments = models.IntegerField()
+    number_of_pingbacks = models.IntegerField()
+    rating = models.IntegerField()
 
     def __str__(self):
-        """Return a string representation of the model."""
-        return self.text
+        return self.headline

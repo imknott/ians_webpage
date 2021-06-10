@@ -3,6 +3,7 @@
 
 
 June 08 2021:
+----------------------------------------------------------------------------
 
 On this day I initialized the begining of the project by making a folder called ians_webpage which I then opened terminal and changed the directory to that folder. Once I arrived in that directory I entered the following code to create a virtual environment for the project:
 
@@ -88,4 +89,68 @@ Finally in the admin.py file found in the ians_py_page app folder I added the fo
             admin.site.register(Body)
 
 And that was my first day of development and will post my next days steps. 
+
+
+June 10, 2021
+----------------------------------------------------------------------------
+
+To start today I refactored the models.py file to no longer hold the model Body or Topic I defined the new models as Author, Blog, and Entry. And to make the changes to our data I ran the terminal and changed directory to our main folder and ran the following: 
+
+            source iw_env/bin/activate
+            python3 manage.py makemigrations
+
+After entering the makemigrations the following output was displayed:
+
+            - Create model Author
+            - Create model Blog
+            - Create model Entry
+            - Delete model Body
+            - Delete model Topic
+
+Now in order to make the change official I ran the code: 
+
+            python3 manage.py migrate
+
+The following output was displayed: 
+
+            Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, ians_py_page, sessions
+            Running migrations:
+
+It applied all the changes made and now I could enter the posts from my admin webpage directly. 
+
+Now the way I go about creating web pages for this site is by first defining the URL pattern and then I will write the views and then write the templates. 
+
+So the first step I took in this process was defiing the URL pattern which I did by first inside the urls.py file in ians_webpage folder entering the following code: 
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('ians_py_page.urls')),
+    ]
+
+
+Once I did that I created a file within the ians_py_page folder called urls.py and inside that file the following code was entered which resembles the file withing ians_webpage under the same name:
+
+from django.urls import path
+
+from . import views 
+
+app_name = 'ians_py_page'
+urlpatterns = [
+    #Home page
+    path('', views.index, name='index'),
+]
+
+
+After this step I went into the views.py file that was autumatically created upon starting the ians_py_page app and entered the following to write a view:
+
+def index(request):
+    """The homepage for ians_py_page"""
+    return render(request, 'ians_py_page/index.html')
+
+
+And after that I created the file index.html to write out the template for the homepage.
 
