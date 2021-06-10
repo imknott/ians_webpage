@@ -5,26 +5,26 @@
 June 08 2021:
 ----------------------------------------------------------------------------
 
-On this day I initialized the begining of the project by making a folder called ians_webpage which I then opened terminal and changed the directory to that folder. Once I arrived in that directory I entered the following code to create a virtual environment for the project:
+On this day I initialized the begining of the project by making a folder called ians_webpage. First, I opened terminal and used the command -cd to change the directory to that folder. Once I arrived in that directory, I entered the following code to create a virtual environment for the project:
 
             python3 -m venv iw_env
 
 
-once that was done I checked to see if I could activate the enviornment by running: 
+Once that was done, I checked to see if I could activate the enviornment by running: 
 
             source iw_env/bin/activate
 
 Which then took me in terminal to the acitvated enviornment. 
 
-Inside the virtual environment in terminal I entered the following code to install django. 
+Inside the virtual environment in the same terminal session I entered the following code to install django. 
 
             pip install django
 
-In order to create the actual project I ran the code 
+In order to create the actual project I ran the code: 
 
             django-admin startproject ians_webpage .
 
-which created the project ians_py_page which should contain the following files: 
+which created the project ians_webpage which should contain the following files: 
 
 __init__.py, settings.py, urls.py, wsgi.py
 
@@ -34,11 +34,11 @@ after this step I created the database for the django application by using the f
 
 What this did was prepare the database to store information it needs to handle authentication and admin tasks. 
 
-Now I tested to see if the server would run now and what outcome would come from that and this is what I did: 
+Now I tested to see if the server would run now and what outcome would come from that: 
 
             python3 manage.py runserver
 
-First it checked to see if my project was set up properly and then it reported the url for my localhost site. When actually putting in the webpage given it just displayed the default django page for a newly made project. 
+First it checked to see if my project was set up properly, and then it listed the url for the localhost site. When actually putting in the webpage given it just displayed the default django page for a newly made project. 
 
 The next phase I went into was setting up the app ians_py_page which I did by running the code in terminal inside the directory ians_webpage
 
